@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './VideoPlayer.css';
 
 const VideoPlayer = ({ videoUrl, title, onClose }) => {
@@ -22,7 +22,7 @@ const VideoPlayer = ({ videoUrl, title, onClose }) => {
     }
   }, []);
 
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     const video = videoRef.current;
     if (video.paused) {
       video.play();
@@ -31,7 +31,7 @@ const VideoPlayer = ({ videoUrl, title, onClose }) => {
       video.pause();
       setIsPlaying(false);
     }
-  };
+  }, []);
 
   const handleSeek = (e) => {
     const video = videoRef.current;
@@ -56,14 +56,14 @@ const VideoPlayer = ({ videoUrl, title, onClose }) => {
     }, 3000);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = useCallback((e) => {
     if (e.code === 'Space') {
       e.preventDefault();
       togglePlay();
     } else if (e.code === 'Escape') {
       onClose();
     }
-  };
+  }, [togglePlay, onClose]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
@@ -71,7 +71,7 @@ const VideoPlayer = ({ videoUrl, title, onClose }) => {
       document.removeEventListener('keydown', handleKeyPress);
       clearTimeout(controlsTimeoutRef.current);
     };
-  }, [isPlaying]);
+  }, [handleKeyPress]);
 
   return (
     <div className="video-player-overlay" onMouseMove={handleMouseMove}>
