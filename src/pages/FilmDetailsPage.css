@@ -1,6 +1,6 @@
 .film-details-page {
   min-height: 100vh;
-  background: #000;
+  background-color: var(--spotify-dark-gray);
 }
 
 .film-hero {
@@ -24,7 +24,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(2px);
+  filter: blur(1px) brightness(0.4);
 }
 
 .hero-overlay {
@@ -35,10 +35,11 @@
   height: 100%;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.8) 0%,
-    rgba(0,0,0,0.4) 50%,
-    rgba(0,0,0,0.8) 100%
+    rgba(18, 18, 18, 0.9) 0%,
+    rgba(18, 18, 18, 0.6) 50%,
+    rgba(18, 18, 18, 0.9) 100%
   );
+  z-index: 1;
 }
 
 .film-hero-content {
@@ -46,91 +47,190 @@
   z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 24px;
   width: 100%;
 }
 
 .film-info {
-  max-width: 600px;
-  color: white;
+  max-width: 700px;
+  color: var(--spotify-white);
 }
 
 .film-title {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: 72px;
+  font-weight: 900;
+  margin-bottom: 24px;
   line-height: 1.1;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: -0.04em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  color: var(--spotify-white);
 }
 
 .film-meta {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
+  gap: 24px;
+  margin-bottom: 32px;
+  font-size: 16px;
+  align-items: center;
 }
 
 .film-duration {
-  background: rgba(255,255,255,0.2);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
+  background-color: var(--spotify-medium-gray);
+  color: var(--spotify-light-text);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--spotify-border);
 }
 
 .film-genre {
-  color: #4ecdc4;
+  color: var(--spotify-green);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.film-year {
+  color: var(--spotify-light-text);
   font-weight: 600;
 }
 
 .film-description {
-  font-size: 1.2rem;
+  font-size: 18px;
   line-height: 1.6;
-  margin-bottom: 3rem;
-  opacity: 0.9;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  margin-bottom: 48px;
+  color: var(--spotify-light-text);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  max-width: 600px;
 }
 
 .film-actions {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
+  align-items: center;
 }
 
 .play-button {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-  color: white;
+  background-color: var(--spotify-green);
+  color: var(--spotify-black);
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  padding: 16px 48px;
+  border-radius: 500px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  gap: 12px;
+  transition: var(--spotify-transition);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .play-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+  background-color: var(--spotify-green-hover);
+  transform: scale(1.04);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.play-button::before {
+  content: '▶';
+  font-size: 14px;
+  margin-left: 2px;
 }
 
 .back-button {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: 2px solid rgba(255,255,255,0.3);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  background-color: transparent;
+  color: var(--spotify-white);
+  border: 1px solid var(--spotify-border);
+  padding: 16px 32px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--spotify-transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .back-button:hover {
-  background: rgba(255,255,255,0.3);
-  transform: translateY(-2px);
+  border-color: var(--spotify-white);
+  transform: scale(1.04);
+}
+
+.back-button::before {
+  content: '←';
+  font-size: 16px;
+}
+
+/* Additional action buttons */
+.secondary-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.action-button {
+  background-color: transparent;
+  color: var(--spotify-light-text);
+  border: 1px solid var(--spotify-border);
+  padding: 12px 24px;
+  border-radius: 500px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--spotify-transition);
+}
+
+.action-button:hover {
+  color: var(--spotify-white);
+  border-color: var(--spotify-white);
+  transform: scale(1.04);
+}
+
+.action-button.liked {
+  color: var(--spotify-green);
+  border-color: var(--spotify-green);
+}
+
+/* Film stats */
+.film-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--spotify-border);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--spotify-white);
+  display: block;
+  letter-spacing: -0.04em;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--spotify-light-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-top: 4px;
 }
 
 .error-container {
@@ -139,41 +239,107 @@
   align-items: center;
   justify-content: center;
   height: 50vh;
-  color: white;
+  color: var(--spotify-white);
   text-align: center;
+  padding: 24px;
 }
 
 .error-container h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  color: var(--spotify-white);
+  letter-spacing: -0.04em;
+}
+
+.error-container p {
+  font-size: 16px;
+  color: var(--spotify-light-text);
+  margin-bottom: 32px;
+  line-height: 1.6;
 }
 
 @media (max-width: 768px) {
   .film-hero-content {
-    padding: 0 1rem;
+    padding: 0 16px;
   }
   
   .film-title {
-    font-size: 2.5rem;
+    font-size: 48px;
+    margin-bottom: 16px;
   }
   
   .film-meta {
     flex-direction: column;
-    gap: 1rem;
+    gap: 12px;
+    align-items: flex-start;
   }
   
   .film-description {
-    font-size: 1rem;
+    font-size: 16px;
+    margin-bottom: 32px;
   }
   
   .film-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 12px;
   }
   
   .play-button,
   .back-button {
-    width: 100%;
     justify-content: center;
+    padding: 14px 32px;
+    font-size: 14px;
+  }
+  
+  .secondary-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .film-stats {
+    gap: 24px;
+    justify-content: center;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  .error-container h2 {
+    font-size: 24px;
+  }
+  
+  .error-container p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .film-title {
+    font-size: 36px;
+  }
+  
+  .film-description {
+    font-size: 14px;
+  }
+  
+  .play-button,
+  .back-button {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+  
+  .film-stats {
+    gap: 16px;
+  }
+  
+  .stat-value {
+    font-size: 18px;
+  }
+  
+  .stat-label {
+    font-size: 10px;
   }
 }
