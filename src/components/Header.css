@@ -1,17 +1,18 @@
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: var(--spotify-black);
+  color: var(--spotify-white);
+  padding: 16px 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid var(--spotify-border);
+  backdrop-filter: blur(10px);
 }
 
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,78 +20,168 @@
 
 .logo h1 {
   margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--spotify-white);
+  letter-spacing: -0.04em;
+  transition: var(--spotify-transition);
 }
 
 .logo {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo:hover h1 {
+  color: var(--spotify-green);
 }
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 32px;
+  align-items: center;
 }
 
 .nav-link {
-  color: white;
+  color: var(--spotify-light-text);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: var(--spotify-transition);
+  position: relative;
+  padding: 8px 0;
 }
 
 .nav-link:hover {
-  color: #4ecdc4;
+  color: var(--spotify-white);
+}
+
+.nav-link.active {
+  color: var(--spotify-white);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--spotify-green);
+  border-radius: 2px;
 }
 
 .user-section {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .user-name {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--spotify-white);
+  background-color: var(--spotify-light-gray);
+  padding: 8px 16px;
+  border-radius: 500px;
+  border: 1px solid var(--spotify-border);
+  transition: var(--spotify-transition);
+}
+
+.user-name:hover {
+  background-color: var(--spotify-hover);
 }
 
 .logout-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  background-color: transparent;
+  color: var(--spotify-light-text);
+  border: 1px solid var(--spotify-border);
+  padding: 8px 24px;
+  border-radius: 500px;
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  transition: var(--spotify-transition);
 }
 
 .logout-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
+  color: var(--spotify-white);
+  border-color: var(--spotify-white);
+  transform: scale(1.04);
+}
+
+/* Spotify-style profile dropdown (for future enhancement) */
+.user-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  border-radius: 500px;
+  background-color: var(--spotify-black);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--spotify-transition);
+}
+
+.user-profile:hover {
+  background-color: var(--spotify-light-gray);
+  border-color: var(--spotify-border);
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--spotify-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--spotify-black);
 }
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0 1rem;
+    padding: 0 16px;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 16px;
   }
   
   .logo h1 {
-    font-size: 1.5rem;
+    font-size: 24px;
+  }
+  
+  .nav {
+    gap: 24px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
   }
   
   .user-section {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
   }
   
   .user-name {
-    font-size: 0.9rem;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .logout-btn {
+    padding: 6px 16px;
+    font-size: 11px;
   }
 }

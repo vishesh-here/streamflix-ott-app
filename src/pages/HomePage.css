@@ -1,47 +1,219 @@
 .home-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-color: var(--spotify-dark-gray);
 }
 
 .main-content {
-  padding-bottom: 2rem;
+  padding-bottom: 48px;
 }
 
 .hero-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--spotify-black) 0%, var(--spotify-medium-gray) 100%);
+  color: var(--spotify-white);
+  padding: 80px 24px;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, var(--spotify-green) 0%, transparent 70%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 24px;
+  color: var(--spotify-white);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.hero-content .highlight {
+  color: var(--spotify-green);
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  font-size: 18px;
+  color: var(--spotify-light-text);
+  line-height: 1.6;
   max-width: 600px;
+  margin: 0 auto 32px auto;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.hero-button {
+  background-color: var(--spotify-green);
+  color: var(--spotify-black);
+  padding: 16px 48px;
+  border-radius: 500px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  transition: var(--spotify-transition);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-button:hover {
+  background-color: var(--spotify-green-hover);
+  transform: scale(1.04);
+}
+
+.hero-button-outline {
+  background-color: transparent;
+  color: var(--spotify-white);
+  border: 2px solid var(--spotify-white);
+  padding: 14px 48px;
+  border-radius: 500px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  transition: var(--spotify-transition);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-button-outline:hover {
+  background-color: var(--spotify-white);
+  color: var(--spotify-black);
+  transform: scale(1.04);
+}
+
+/* Spotify-style content sections */
+.content-section {
+  margin-bottom: 64px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 0 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title-main {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--spotify-white);
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.section-subtitle-main {
+  font-size: 16px;
+  color: var(--spotify-light-text);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Welcome message */
+.welcome-section {
+  padding: 32px 24px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.welcome-message {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--spotify-white);
+  margin-bottom: 8px;
+  letter-spacing: -0.04em;
+}
+
+.welcome-subtitle {
+  font-size: 16px;
+  color: var(--spotify-light-text);
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 2rem 1rem;
+    padding: 48px 16px;
+    margin-bottom: 32px;
   }
   
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 32px;
+    margin-bottom: 16px;
   }
   
   .hero-content p {
-    font-size: 1rem;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .hero-button,
+  .hero-button-outline {
+    padding: 12px 32px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .section-header {
+    padding: 0 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .section-title-main {
+    font-size: 24px;
+  }
+  
+  .section-subtitle-main {
+    font-size: 14px;
+  }
+  
+  .welcome-section {
+    padding: 24px 16px;
+  }
+  
+  .welcome-message {
+    font-size: 22px;
+  }
+  
+  .welcome-subtitle {
+    font-size: 14px;
   }
 }

@@ -1,39 +1,182 @@
 .film-grid-section {
-  margin: 2rem 0;
+  margin: 48px 0;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 24px;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  color: var(--spotify-white);
+  margin-bottom: 24px;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  padding: 0 24px;
+}
+
+.section-title:hover {
+  color: var(--spotify-white);
 }
 
 .film-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 0 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 0 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Spotify-style section headers */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 0 24px;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--spotify-light-text);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.show-all-link {
+  color: var(--spotify-light-text);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: var(--spotify-transition);
+}
+
+.show-all-link:hover {
+  color: var(--spotify-white);
+  text-decoration: underline;
+}
+
+/* Spotify-style grid layouts */
+.film-grid-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.film-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Loading state */
+.film-grid-loading {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.film-card-skeleton {
+  background-color: var(--spotify-card-gray);
+  border-radius: 8px;
+  padding: 16px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-poster {
+  width: 100%;
+  height: 280px;
+  background-color: var(--spotify-medium-gray);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.skeleton-title {
+  height: 16px;
+  background-color: var(--spotify-medium-gray);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  width: 80%;
+}
+
+.skeleton-meta {
+  height: 12px;
+  background-color: var(--spotify-medium-gray);
+  border-radius: 4px;
+  width: 60%;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 @media (max-width: 768px) {
   .film-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 0 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 0 16px;
+  }
+  
+  .film-grid-large {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 0 16px;
+  }
+  
+  .film-grid-compact {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 0 16px;
   }
   
   .section-title {
-    font-size: 1.5rem;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 0 16px;
+  }
+  
+  .section-header {
+    padding: 0 16px;
+  }
+  
+  .skeleton-poster {
+    height: 240px;
   }
 }
 
 @media (max-width: 480px) {
   .film-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .film-grid-large {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .film-grid-compact {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 16px;
   }
 }
