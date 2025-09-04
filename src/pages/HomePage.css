@@ -1,47 +1,87 @@
-.home-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
 
-.main-content {
-  padding-bottom: 2rem;
+.home-page {
+  background: var(--spotify-black);
+  min-height: 100vh;
 }
 
 .hero-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--spotify-dark-gray) 0%, var(--spotify-black) 100%);
+  padding: var(--spacing-xxl) var(--spacing-xl);
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-xl);
 }
 
-.hero-content h1 {
+.hero-title {
+  color: var(--text-primary);
   font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
 }
 
-.hero-content p {
+.hero-subtitle {
+  color: var(--text-secondary);
   font-size: 1.2rem;
-  opacity: 0.9;
+  font-weight: var(--font-weight-normal);
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto var(--spacing-xl) auto;
+  line-height: 1.5;
+}
+
+.hero-cta {
+  display: inline-flex;
+  gap: var(--spacing-md);
+}
+
+.content-sections {
+  padding: 0 var(--spacing-xl);
+}
+
+.welcome-message {
+  background: var(--card-background);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.welcome-title {
+  color: var(--spotify-green);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.welcome-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 2rem 1rem;
+    padding: var(--spacing-xl) var(--spacing-md);
   }
   
-  .hero-content h1 {
-    font-size: 2rem;
+  .hero-title {
+    font-size: 2.2rem;
   }
   
-  .hero-content p {
+  .hero-subtitle {
     font-size: 1rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .content-sections {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .welcome-message {
+    padding: var(--spacing-lg);
   }
 }
