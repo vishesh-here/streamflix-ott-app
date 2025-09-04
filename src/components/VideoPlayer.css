@@ -1,14 +1,16 @@
+/* Spotify-themed Video Player Component */
 .video-player-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black;
-  z-index: 1000;
+  background: var(--spotify-black);
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .video-container {
@@ -18,6 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--spotify-black);
 }
 
 .video-element {
@@ -25,6 +28,11 @@
   height: 100%;
   object-fit: contain;
   cursor: pointer;
+  transition: filter var(--transition-base);
+}
+
+.video-element:hover {
+  filter: brightness(1.1);
 }
 
 .video-controls {
@@ -35,18 +43,19 @@
   bottom: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.7) 0%,
-    transparent 20%,
-    transparent 80%,
-    rgba(0,0,0,0.7) 100%
+    rgba(0, 0, 0, 0.8) 0%,
+    transparent 15%,
+    transparent 85%,
+    rgba(0, 0, 0, 0.9) 100%
   );
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
+  padding: var(--spacing-xl);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-slow);
   pointer-events: none;
+  backdrop-filter: blur(2px);
 }
 
 .video-controls.visible {
@@ -57,108 +66,541 @@
 .controls-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+}
+
+.video-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .video-title {
-  color: white;
-  font-size: 1.5rem;
+  color: var(--spotify-white);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
   margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.video-subtitle {
+  color: var(--spotify-light-gray);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.video-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-top: var(--spacing-sm);
+}
+
+.video-duration,
+.video-quality,
+.video-rating {
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--spotify-white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-rating.high {
+  background: rgba(29, 185, 84, 0.2);
+  border-color: var(--spotify-green);
+  color: var(--spotify-green);
+}
+
+.controls-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
 }
 
 .close-button {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--spotify-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: var(--font-size-xl);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.close-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .close-button:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--spotify-white);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.close-button:hover::before {
+  left: 100%;
+}
+
+.fullscreen-button,
+.settings-button {
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--spotify-light-gray);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.fullscreen-button:hover,
+.settings-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--spotify-white);
+  border-color: var(--spotify-green);
+  transform: scale(1.05);
+}
+
+.controls-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.play-pause-btn {
+  background: var(--spotify-green);
+  color: var(--spotify-black);
+  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: var(--font-size-3xl);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-bounce);
+  box-shadow: var(--shadow-spotify);
+  position: relative;
+  overflow: hidden;
+}
+
+.play-pause-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.play-pause-btn:hover {
+  background: var(--spotify-green-hover);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-2xl);
+}
+
+.play-pause-btn:hover::before {
+  left: 100%;
+}
+
+.play-pause-btn:active {
+  transform: scale(1.05);
+}
+
+.secondary-controls {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  margin: 0 var(--spacing-xl);
+}
+
+.skip-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--spotify-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.skip-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-color: var(--spotify-green);
 }
 
 .controls-bottom {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.play-pause-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
-}
-
-.play-pause-btn:hover {
-  background: rgba(255,255,255,0.3);
+  gap: var(--spacing-lg);
+  background: rgba(0, 0, 0, 0.4);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .progress-container {
   flex: 1;
-  margin: 0 1rem;
+  margin: 0 var(--spacing-md);
+  position: relative;
 }
 
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
   position: relative;
+  transition: height var(--transition-base);
+}
+
+.progress-bar:hover {
+  height: 8px;
 }
 
 .progress-fill {
   height: 100%;
-  background: #ff6b6b;
-  border-radius: 3px;
+  background: linear-gradient(90deg, var(--spotify-green) 0%, var(--spotify-green-hover) 100%);
+  border-radius: var(--border-radius-sm);
   transition: width 0.1s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--spotify-white);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.progress-bar:hover .progress-fill::after {
+  opacity: 1;
+}
+
+.progress-buffer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-sm);
+  transition: width 0.3s ease;
 }
 
 .time-display {
-  color: white;
-  font-size: 0.9rem;
+  color: var(--spotify-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   min-width: 100px;
-  text-align: right;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.volume-button {
+  background: transparent;
+  color: var(--spotify-light-gray);
+  border: none;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-base);
+}
+
+.volume-button:hover {
+  color: var(--spotify-white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.volume-slider {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  position: relative;
+}
+
+.volume-fill {
+  height: 100%;
+  background: var(--spotify-green);
+  border-radius: var(--border-radius-sm);
+  transition: width 0.1s ease;
+}
+
+/* Loading state */
+.video-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  color: var(--spotify-white);
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid var(--spotify-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+/* Error state */
+.video-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--spotify-white);
+  max-width: 400px;
+}
+
+.error-icon {
+  font-size: var(--font-size-4xl);
+  color: var(--spotify-red);
+  margin-bottom: var(--spacing-lg);
+}
+
+.error-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-message {
+  font-size: var(--font-size-base);
+  color: var(--spotify-text-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.retry-button {
+  background: var(--spotify-green);
+  color: var(--spotify-black);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.retry-button:hover {
+  background: var(--spotify-green-hover);
+  transform: scale(1.05);
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
   .video-controls {
-    padding: 1rem;
+    padding: var(--spacing-lg);
   }
   
   .video-title {
-    font-size: 1.2rem;
+    font-size: var(--font-size-xl);
   }
   
-  .controls-bottom {
-    gap: 0.5rem;
+  .video-subtitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .controls-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .controls-actions {
+    align-self: flex-end;
   }
   
   .play-pause-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
+    width: 64px;
+    height: 64px;
+    font-size: var(--font-size-2xl);
+  }
+  
+  .secondary-controls {
+    gap: var(--spacing-md);
+    margin: 0 var(--spacing-lg);
+  }
+  
+  .skip-button {
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-lg);
+  }
+  
+  .controls-bottom {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
   }
   
   .time-display {
-    font-size: 0.8rem;
+    font-size: var(--font-size-xs);
     min-width: 80px;
+  }
+  
+  .volume-control {
+    display: none;
+  }
+  
+  .video-meta {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .video-controls {
+    padding: var(--spacing-md);
+  }
+  
+  .video-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .play-pause-btn {
+    width: 56px;
+    height: 56px;
+    font-size: var(--font-size-xl);
+  }
+  
+  .secondary-controls {
+    display: none;
+  }
+  
+  .close-button {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
+  }
+  
+  .controls-bottom {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .progress-container {
+    margin: 0;
+    order: -1;
+  }
+}
+
+/* Accessibility improvements */
+.video-controls button:focus {
+  outline: 2px solid var(--spotify-green);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .video-controls {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.95) 0%,
+      transparent 15%,
+      transparent 85%,
+      rgba(0, 0, 0, 0.95) 100%
+    );
+  }
+  
+  .controls-bottom {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--spotify-white);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .video-player-overlay {
+    animation: none;
+  }
+  
+  .play-pause-btn,
+  .close-button,
+  .skip-button {
+    transition: none;
+  }
+  
+  .play-pause-btn:hover,
+  .close-button:hover,
+  .skip-button:hover {
+    transform: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
   }
 }
