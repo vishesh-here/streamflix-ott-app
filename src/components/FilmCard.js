@@ -1,8 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './FilmCard.css';
 
 const FilmCard = ({ film }) => {
+  const navigate = useNavigate();
+
+  const handlePlayClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Navigate directly to video player
+    navigate(`/watch/${film.id}`);
+  };
+
   return (
     <div className="film-card">
       <Link to={`/film/${film.id}`} className="film-link">
@@ -13,11 +22,11 @@ const FilmCard = ({ film }) => {
             loading="lazy"
           />
           <div className="film-overlay">
-            <div className="play-button">
+            <button className="play-button" onClick={handlePlayClick}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5v14l11-7z"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
         <div className="film-info">

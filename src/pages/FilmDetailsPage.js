@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import VideoPlayer from '../components/VideoPlayer';
 import { getFilmById } from '../data/films';
 import './FilmDetailsPage.css';
 
 const FilmDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [showPlayer, setShowPlayer] = useState(false);
   
   const film = getFilmById(id);
   
@@ -27,11 +25,8 @@ const FilmDetailsPage = () => {
   }
 
   const handlePlayClick = () => {
-    setShowPlayer(true);
-  };
-
-  const handleClosePlayer = () => {
-    setShowPlayer(false);
+    // Navigate to the dedicated video player page
+    navigate(`/watch/${id}`);
   };
 
   return (
@@ -67,14 +62,6 @@ const FilmDetailsPage = () => {
           </div>
         </div>
       </div>
-      
-      {showPlayer && (
-        <VideoPlayer
-          videoUrl={film.videoUrl}
-          title={film.title}
-          onClose={handleClosePlayer}
-        />
-      )}
     </div>
   );
 };
