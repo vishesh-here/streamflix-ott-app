@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import FilmDetailsPage from './pages/FilmDetailsPage';
+import VideoPlayerPage from './pages/VideoPlayerPage';
 import './App.css';
 
 function App() {
@@ -32,6 +33,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <FilmDetailsPage />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/watch/:id" 
+                element={
+                  <ProtectedRoute>
+                    <VideoPlayerPage />
                   </ProtectedRoute>
                 } 
               />

@@ -1,15 +1,37 @@
+/* Spotify-themed Film Card Component */
 .film-card {
-  background: white;
-  border-radius: 12px;
+  background: var(--spotify-card-bg);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-slow);
   cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.film-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
 }
 
 .film-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-spotify);
+  background: var(--spotify-elevated-base);
+  border-color: rgba(29, 185, 84, 0.3);
+}
+
+.film-card:hover::before {
+  opacity: 1;
 }
 
 .film-link {
@@ -23,17 +45,20 @@
   width: 100%;
   height: 300px;
   overflow: hidden;
+  background: var(--spotify-medium-gray);
 }
 
 .film-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-slow);
+  filter: brightness(0.9);
 }
 
 .film-card:hover .film-poster img {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: brightness(1.1);
 }
 
 .film-overlay {
@@ -42,12 +67,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.7);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all var(--transition-slow);
+  backdrop-filter: blur(2px);
 }
 
 .film-card:hover .film-overlay {
@@ -55,64 +81,288 @@
 }
 
 .play-button {
-  background: rgba(255,255,255,0.9);
-  color: #333;
-  width: 60px;
-  height: 60px;
+  background: var(--spotify-green);
+  color: var(--spotify-black);
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all var(--transition-bounce);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
 }
 
 .play-button:hover {
-  background: white;
-  transform: scale(1.1);
+  background: var(--spotify-green-hover);
+  transform: scale(1.15);
+  box-shadow: var(--shadow-2xl);
+}
+
+.play-button:hover::before {
+  left: 100%;
+}
+
+.play-button:active {
+  transform: scale(1.05);
 }
 
 .film-info {
-  padding: 1.5rem;
+  padding: var(--spacing-lg);
+  background: var(--spotify-card-bg);
+  position: relative;
 }
 
 .film-title {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--spotify-white);
   line-height: 1.3;
+  transition: color var(--transition-base);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.film-card:hover .film-title {
+  color: var(--spotify-green);
 }
 
 .film-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--spotify-text-gray);
+  margin-top: var(--spacing-md);
 }
 
 .film-duration {
-  background: #f0f0f0;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 500;
+  background: var(--spotify-medium-gray);
+  color: var(--spotify-light-gray);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-base);
+}
+
+.film-card:hover .film-duration {
+  background: var(--spotify-green);
+  color: var(--spotify-black);
 }
 
 .film-genre {
-  color: #667eea;
-  font-weight: 500;
+  color: var(--spotify-green);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-base);
 }
 
+.film-card:hover .film-genre {
+  color: var(--spotify-green-hover);
+}
+
+/* Rating stars */
+.film-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.film-rating .stars {
+  color: var(--spotify-green);
+  font-size: var(--font-size-sm);
+}
+
+.film-rating .rating-text {
+  color: var(--spotify-text-gray);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Glass morphism variant */
+.film-card.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+}
+
+.film-card.glass:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(29, 185, 84, 0.4);
+}
+
+.film-card.glass .film-info {
+  background: transparent;
+}
+
+/* Featured card variant */
+.film-card.featured {
+  border: 2px solid var(--spotify-green);
+  position: relative;
+}
+
+.film-card.featured::after {
+  content: 'FEATURED';
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: var(--spotify-green);
+  color: var(--spotify-black);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+/* Loading state */
+.film-card.loading {
+  pointer-events: none;
+}
+
+.film-card.loading .film-poster {
+  background: linear-gradient(90deg, var(--spotify-medium-gray) 25%, var(--spotify-surface) 50%, var(--spotify-medium-gray) 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.film-card.loading .film-info {
+  opacity: 0.6;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
   .film-poster {
     height: 250px;
   }
   
   .film-info {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
   
   .film-title {
-    font-size: 1.1rem;
+    font-size: var(--font-size-md);
+  }
+  
+  .play-button {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+  
+  .film-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .film-poster {
+    height: 200px;
+  }
+  
+  .film-info {
+    padding: var(--spacing-sm);
+  }
+  
+  .film-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .play-button {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+}
+
+/* Accessibility improvements */
+.film-card:focus-within {
+  outline: 2px solid var(--spotify-green);
+  outline-offset: 2px;
+}
+
+.play-button:focus {
+  outline: 2px solid var(--spotify-white);
+  outline-offset: 2px;
+}
+
+/* Animation delays for staggered loading */
+.film-card:nth-child(1) { animation-delay: 0.1s; }
+.film-card:nth-child(2) { animation-delay: 0.2s; }
+.film-card:nth-child(3) { animation-delay: 0.3s; }
+.film-card:nth-child(4) { animation-delay: 0.4s; }
+.film-card:nth-child(5) { animation-delay: 0.5s; }
+.film-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .film-card {
+    border: 2px solid var(--spotify-white);
+  }
+  
+  .film-title {
+    color: var(--spotify-white);
+  }
+  
+  .play-button {
+    border: 2px solid var(--spotify-black);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .film-card,
+  .film-poster img,
+  .film-overlay,
+  .play-button,
+  .film-title,
+  .film-duration,
+  .film-genre {
+    transition: none;
+  }
+  
+  .film-card:hover {
+    transform: none;
+  }
+  
+  .film-card:hover .film-poster img {
+    transform: none;
+  }
+  
+  .play-button:hover {
+    transform: none;
   }
 }
