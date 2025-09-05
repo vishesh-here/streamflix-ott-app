@@ -1,0 +1,52 @@
+/* Video Player Page Styles */
+.video-player-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--spotify-black);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-player-page .error-container {
+  text-align: center;
+  color: var(--spotify-white);
+  padding: var(--spacing-xl);
+}
+
+.video-player-page .error-container h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--spotify-white);
+}
+
+.video-player-page .back-button {
+  background: var(--spotify-green);
+  color: var(--spotify-black);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.video-player-page .back-button:hover {
+  background: var(--spotify-green-hover);
+  transform: scale(1.05);
+}
+
+/* Ensure the video player takes full screen */
+.video-player-page .video-player-overlay {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
