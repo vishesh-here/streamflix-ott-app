@@ -1,6 +1,6 @@
-/* Spotify-themed Film Card Component */
+/* Prime Video-themed Film Card Component */
 .film-card {
-  background: var(--spotify-card-bg);
+  background: var(--prime-card-bg);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -26,7 +26,7 @@
 .film-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-spotify);
-  background: var(--spotify-elevated-base);
+  background: var(--prime-elevated-base);
   border-color: rgba(29, 185, 84, 0.3);
 }
 
@@ -45,7 +45,7 @@
   width: 100%;
   height: 300px;
   overflow: hidden;
-  background: var(--spotify-medium-gray);
+  background: var(--prime-medium-gray);
 }
 
 .film-poster img {
@@ -81,8 +81,8 @@
 }
 
 .play-button {
-  background: var(--spotify-green);
-  color: var(--spotify-black);
+  background: var(--prime-green);
+  color: var(--prime-black);
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -112,7 +112,7 @@
 }
 
 .play-button:hover {
-  background: var(--spotify-green-hover);
+  background: var(--prime-green-hover);
   transform: scale(1.15);
   box-shadow: var(--shadow-2xl);
 }
@@ -127,7 +127,7 @@
 
 .film-info {
   padding: var(--spacing-lg);
-  background: var(--spotify-card-bg);
+  background: var(--prime-card-bg);
   position: relative;
 }
 
@@ -135,7 +135,7 @@
   margin: 0 0 var(--spacing-sm) 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  color: var(--spotify-white);
+  color: var(--prime-white);
   line-height: 1.3;
   transition: color var(--transition-base);
   display: -webkit-box;
@@ -145,7 +145,7 @@
 }
 
 .film-card:hover .film-title {
-  color: var(--spotify-green);
+  color: var(--prime-green);
 }
 
 .film-meta {
@@ -153,13 +153,13 @@
   justify-content: space-between;
   align-items: center;
   font-size: var(--font-size-sm);
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
   margin-top: var(--spacing-md);
 }
 
 .film-duration {
-  background: var(--spotify-medium-gray);
-  color: var(--spotify-light-gray);
+  background: var(--prime-medium-gray);
+  color: var(--prime-light-gray);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-sm);
   font-weight: var(--font-weight-medium);
@@ -170,19 +170,19 @@
 }
 
 .film-card:hover .film-duration {
-  background: var(--spotify-green);
-  color: var(--spotify-black);
+  background: var(--prime-green);
+  color: var(--prime-black);
 }
 
 .film-genre {
-  color: var(--spotify-green);
+  color: var(--prime-green);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
   transition: color var(--transition-base);
 }
 
 .film-card:hover .film-genre {
-  color: var(--spotify-green-hover);
+  color: var(--prime-green-hover);
 }
 
 /* Rating stars */
@@ -194,12 +194,12 @@
 }
 
 .film-rating .stars {
-  color: var(--spotify-green);
+  color: var(--prime-green);
   font-size: var(--font-size-sm);
 }
 
 .film-rating .rating-text {
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
 }
@@ -222,7 +222,7 @@
 
 /* Featured card variant */
 .film-card.featured {
-  border: 2px solid var(--spotify-green);
+  border: 2px solid var(--prime-green);
   position: relative;
 }
 
@@ -231,8 +231,8 @@
   position: absolute;
   top: var(--spacing-sm);
   right: var(--spacing-sm);
-  background: var(--spotify-green);
-  color: var(--spotify-black);
+  background: var(--prime-green);
+  color: var(--prime-black);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-xs);
@@ -247,7 +247,7 @@
 }
 
 .film-card.loading .film-poster {
-  background: linear-gradient(90deg, var(--spotify-medium-gray) 25%, var(--spotify-surface) 50%, var(--spotify-medium-gray) 75%);
+  background: linear-gradient(90deg, var(--prime-medium-gray) 25%, var(--prime-surface) 50%, var(--prime-medium-gray) 75%);
   background-size: 200% 100%;
   animation: loading-shimmer 1.5s infinite;
 }
@@ -310,12 +310,12 @@
 
 /* Accessibility improvements */
 .film-card:focus-within {
-  outline: 2px solid var(--spotify-green);
+  outline: 2px solid var(--prime-green);
   outline-offset: 2px;
 }
 
 .play-button:focus {
-  outline: 2px solid var(--spotify-white);
+  outline: 2px solid var(--prime-white);
   outline-offset: 2px;
 }
 
@@ -330,15 +330,15 @@
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .film-card {
-    border: 2px solid var(--spotify-white);
+    border: 2px solid var(--prime-white);
   }
   
   .film-title {
-    color: var(--spotify-white);
+    color: var(--prime-white);
   }
   
   .play-button {
-    border: 2px solid var(--spotify-black);
+    border: 2px solid var(--prime-black);
   }
 }
 

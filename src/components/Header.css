@@ -1,14 +1,14 @@
-/* Spotify-themed Header Component */
+/* Prime Video-themed Header Component */
 .header {
-  background: linear-gradient(135deg, var(--spotify-black) 0%, var(--spotify-dark-gray) 100%);
-  color: var(--spotify-white);
+  background: linear-gradient(135deg, var(--prime-black) 0%, var(--prime-dark-gray) 100%);
+  color: var(--prime-white);
   padding: var(--spacing-md) 0;
   box-shadow: var(--shadow-lg);
   position: sticky;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--spotify-medium-gray);
+  border-bottom: 1px solid var(--prime-medium-gray);
   transition: all var(--transition-base);
 }
 
@@ -45,7 +45,7 @@
   margin: 0;
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-black);
-  background: linear-gradient(135deg, var(--spotify-green) 0%, var(--spotify-green-hover) 100%);
+  background: linear-gradient(135deg, var(--prime-green) 0%, var(--prime-green-hover) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -60,7 +60,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--spotify-green);
+  background: var(--prime-green);
   transition: width var(--transition-base);
 }
 
@@ -71,13 +71,13 @@
 .logo-icon {
   width: 32px;
   height: 32px;
-  background: var(--spotify-green);
+  background: var(--prime-green);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--font-weight-bold);
-  color: var(--spotify-black);
+  color: var(--prime-black);
   font-size: var(--font-size-lg);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .nav-link {
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
   text-decoration: none;
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
@@ -107,14 +107,14 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--spotify-green);
+  background: var(--prime-green);
   transition: all var(--transition-base);
   transform: translateX(-50%);
 }
 
 .nav-link:hover {
-  color: var(--spotify-white);
-  background: var(--spotify-hover-gray);
+  color: var(--prime-white);
+  background: var(--prime-hover-gray);
 }
 
 .nav-link:hover::before {
@@ -122,8 +122,8 @@
 }
 
 .nav-link.active {
-  color: var(--spotify-green);
-  background: var(--spotify-medium-gray);
+  color: var(--prime-green);
+  background: var(--prime-medium-gray);
 }
 
 .nav-link.active::before {
@@ -140,12 +140,12 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--spotify-green);
+  background: var(--prime-green);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--font-weight-bold);
-  color: var(--spotify-black);
+  color: var(--prime-black);
   font-size: var(--font-size-base);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -181,22 +181,22 @@
 
 .user-name {
   font-weight: var(--font-weight-bold);
-  color: var(--spotify-white);
+  color: var(--prime-white);
   font-size: var(--font-size-base);
   margin: 0;
 }
 
 .user-status {
   font-size: var(--font-size-xs);
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .logout-btn {
   background: transparent;
-  color: var(--spotify-light-gray);
-  border: 1px solid var(--spotify-medium-gray);
+  color: var(--prime-light-gray);
+  border: 1px solid var(--prime-medium-gray);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius-full);
   cursor: pointer;
@@ -216,14 +216,14 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: var(--spotify-green);
+  background: var(--prime-green);
   transition: left var(--transition-base);
   z-index: -1;
 }
 
 .logout-btn:hover {
-  color: var(--spotify-black);
-  border-color: var(--spotify-green);
+  color: var(--prime-black);
+  border-color: var(--prime-green);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -237,7 +237,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--spotify-medium-gray);
+  background: var(--prime-medium-gray);
   border-radius: var(--border-radius-full);
   padding: var(--spacing-sm) var(--spacing-md);
   transition: all var(--transition-base);
@@ -245,15 +245,15 @@
 }
 
 .search-container:focus-within {
-  background: var(--spotify-surface);
-  box-shadow: 0 0 0 2px var(--spotify-green);
+  background: var(--prime-surface);
+  box-shadow: 0 0 0 2px var(--prime-green);
 }
 
 .search-input {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--spotify-white);
+  color: var(--prime-white);
   font-size: var(--font-size-base);
   width: 100%;
   padding: 0;
@@ -261,11 +261,11 @@
 }
 
 .search-input::placeholder {
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
 }
 
 .search-icon {
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
   margin-right: var(--spacing-sm);
   font-size: var(--font-size-lg);
 }
@@ -275,7 +275,7 @@
   display: none;
   background: transparent;
   border: none;
-  color: var(--spotify-white);
+  color: var(--prime-white);
   font-size: var(--font-size-xl);
   cursor: pointer;
   padding: var(--spacing-sm);
@@ -284,7 +284,7 @@
 }
 
 .mobile-menu-toggle:hover {
-  background: var(--spotify-hover-gray);
+  background: var(--prime-hover-gray);
 }
 
 /* Mobile navigation */
@@ -294,8 +294,8 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--spotify-black);
-  border-top: 1px solid var(--spotify-medium-gray);
+  background: var(--prime-black);
+  border-top: 1px solid var(--prime-medium-gray);
   padding: var(--spacing-md);
   flex-direction: column;
   gap: var(--spacing-md);
@@ -380,7 +380,7 @@
 .nav-link:focus,
 .logout-btn:focus,
 .user-avatar:focus {
-  outline: 2px solid var(--spotify-green);
+  outline: 2px solid var(--prime-green);
   outline-offset: 2px;
 }
 
@@ -410,7 +410,7 @@
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .header {
-    border-bottom: 2px solid var(--spotify-white);
+    border-bottom: 2px solid var(--prime-white);
   }
   
   .nav-link {
@@ -418,7 +418,7 @@
   }
   
   .nav-link:hover {
-    border-color: var(--spotify-white);
+    border-color: var(--prime-white);
   }
 }
 

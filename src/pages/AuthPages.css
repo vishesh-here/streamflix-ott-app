@@ -1,6 +1,6 @@
 .auth-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--prime-black) 0%, var(--prime-dark-gray) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,12 +8,13 @@
 }
 
 .auth-container {
-  background: white;
+  background: var(--prime-card-bg);
   padding: 3rem;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   width: 100%;
   max-width: 400px;
+  border: 1px solid var(--prime-medium-gray);
 }
 
 .auth-header {
@@ -24,7 +25,7 @@
 .auth-header h1 {
   font-size: 2.5rem;
   font-weight: bold;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, var(--prime-blue), var(--prime-blue-hover));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -32,7 +33,7 @@
 }
 
 .auth-header h2 {
-  color: #333;
+  color: var(--prime-white);
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
@@ -52,26 +53,32 @@
 
 .form-group label {
   font-weight: 600;
-  color: #333;
+  color: var(--prime-light-gray);
   font-size: 0.9rem;
 }
 
 .form-group input {
   padding: 0.75rem;
-  border: 2px solid #e1e5e9;
+  border: 2px solid var(--prime-medium-gray);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  background: var(--prime-surface);
+  color: var(--prime-white);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--prime-blue);
+}
+
+.form-group input::placeholder {
+  color: var(--prime-text-gray);
 }
 
 .auth-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--prime-blue) 0%, var(--prime-blue-hover) 100%);
+  color: var(--prime-white);
   border: none;
   padding: 0.75rem;
   border-radius: 8px;
@@ -91,11 +98,11 @@
 }
 
 .error-message {
-  background: #fee;
-  color: #c33;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
   padding: 0.75rem;
   border-radius: 8px;
-  border: 1px solid #fcc;
+  border: 1px solid rgba(239, 68, 68, 0.3);
   font-size: 0.9rem;
 }
 
@@ -103,42 +110,44 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid #e1e5e9;
+  border-top: 1px solid var(--prime-medium-gray);
 }
 
 .auth-footer p {
-  color: #666;
+  color: var(--prime-text-gray);
   margin: 0;
 }
 
 .auth-footer a {
-  color: #667eea;
+  color: var(--prime-blue);
   text-decoration: none;
   font-weight: 600;
 }
 
 .auth-footer a:hover {
   text-decoration: underline;
+  color: var(--prime-blue-hover);
 }
 
 .demo-credentials {
-  background: #f8f9fa;
+  background: var(--prime-surface);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1.5rem;
   text-align: center;
+  border: 1px solid var(--prime-medium-gray);
 }
 
 .demo-credentials h4 {
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: var(--prime-white);
   font-size: 0.9rem;
 }
 
 .demo-credentials p {
   margin: 0.25rem 0;
   font-size: 0.8rem;
-  color: #666;
+  color: var(--prime-light-gray);
   font-family: monospace;
 }
 

@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--spotify-black);
+  background: var(--prime-black);
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--spotify-black);
+  background: var(--prime-black);
 }
 
 .video-element {
@@ -78,7 +78,7 @@
 }
 
 .video-title {
-  color: var(--spotify-white);
+  color: var(--prime-white);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   margin: 0;
@@ -87,7 +87,7 @@
 }
 
 .video-subtitle {
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
@@ -104,7 +104,7 @@
 .video-quality,
 .video-rating {
   background: rgba(0, 0, 0, 0.6);
-  color: var(--spotify-white);
+  color: var(--prime-white);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
@@ -115,8 +115,8 @@
 
 .video-rating.high {
   background: rgba(29, 185, 84, 0.2);
-  border-color: var(--spotify-green);
-  color: var(--spotify-green);
+  border-color: var(--prime-green);
+  color: var(--prime-green);
 }
 
 .controls-actions {
@@ -127,7 +127,7 @@
 
 .close-button {
   background: rgba(0, 0, 0, 0.6);
-  color: var(--spotify-white);
+  color: var(--prime-white);
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 48px;
   height: 48px;
@@ -156,7 +156,7 @@
 
 .close-button:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: var(--spotify-white);
+  border-color: var(--prime-white);
   transform: scale(1.1);
   box-shadow: var(--shadow-lg);
 }
@@ -168,7 +168,7 @@
 .fullscreen-button,
 .settings-button {
   background: rgba(0, 0, 0, 0.6);
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 40px;
   height: 40px;
@@ -185,8 +185,8 @@
 .fullscreen-button:hover,
 .settings-button:hover {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--spotify-white);
-  border-color: var(--spotify-green);
+  color: var(--prime-white);
+  border-color: var(--prime-green);
   transform: scale(1.05);
 }
 
@@ -198,8 +198,8 @@
 }
 
 .play-pause-btn {
-  background: var(--spotify-green);
-  color: var(--spotify-black);
+  background: var(--prime-green);
+  color: var(--prime-black);
   border: none;
   width: 80px;
   height: 80px;
@@ -227,7 +227,7 @@
 }
 
 .play-pause-btn:hover {
-  background: var(--spotify-green-hover);
+  background: var(--prime-green-hover);
   transform: scale(1.1);
   box-shadow: var(--shadow-2xl);
 }
@@ -249,7 +249,7 @@
 
 .skip-button {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--spotify-white);
+  color: var(--prime-white);
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 56px;
   height: 56px;
@@ -266,7 +266,7 @@
 .skip-button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
-  border-color: var(--spotify-green);
+  border-color: var(--prime-green);
 }
 
 .controls-bottom {
@@ -302,7 +302,7 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--spotify-green) 0%, var(--spotify-green-hover) 100%);
+  background: linear-gradient(90deg, var(--prime-green) 0%, var(--prime-green-hover) 100%);
   border-radius: var(--border-radius-sm);
   transition: width 0.1s ease;
   position: relative;
@@ -316,7 +316,7 @@
   transform: translateY(-50%);
   width: 12px;
   height: 12px;
-  background: var(--spotify-white);
+  background: var(--prime-white);
   border-radius: 50%;
   opacity: 0;
   transition: opacity var(--transition-base);
@@ -338,7 +338,7 @@
 }
 
 .time-display {
-  color: var(--spotify-white);
+  color: var(--prime-white);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   min-width: 100px;
@@ -355,7 +355,7 @@
 
 .volume-button {
   background: transparent;
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
   border: none;
   font-size: var(--font-size-lg);
   cursor: pointer;
@@ -365,7 +365,7 @@
 }
 
 .volume-button:hover {
-  color: var(--spotify-white);
+  color: var(--prime-white);
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -380,7 +380,7 @@
 
 .volume-fill {
   height: 100%;
-  background: var(--spotify-green);
+  background: var(--prime-green);
   border-radius: var(--border-radius-sm);
   transition: width 0.1s ease;
 }
@@ -395,14 +395,14 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-lg);
-  color: var(--spotify-white);
+  color: var(--prime-white);
 }
 
 .loading-spinner {
   width: 60px;
   height: 60px;
   border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top: 3px solid var(--spotify-green);
+  border-top: 3px solid var(--prime-green);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -420,13 +420,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: var(--spotify-white);
+  color: var(--prime-white);
   max-width: 400px;
 }
 
 .error-icon {
   font-size: var(--font-size-4xl);
-  color: var(--spotify-red);
+  color: var(--prime-red);
   margin-bottom: var(--spacing-lg);
 }
 
@@ -438,13 +438,13 @@
 
 .error-message {
   font-size: var(--font-size-base);
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
   margin-bottom: var(--spacing-lg);
 }
 
 .retry-button {
-  background: var(--spotify-green);
-  color: var(--spotify-black);
+  background: var(--prime-green);
+  color: var(--prime-black);
   border: none;
   padding: var(--spacing-md) var(--spacing-xl);
   border-radius: var(--border-radius-full);
@@ -457,7 +457,7 @@
 }
 
 .retry-button:hover {
-  background: var(--spotify-green-hover);
+  background: var(--prime-green-hover);
   transform: scale(1.05);
 }
 
@@ -560,7 +560,7 @@
 
 /* Accessibility improvements */
 .video-controls button:focus {
-  outline: 2px solid var(--spotify-green);
+  outline: 2px solid var(--prime-green);
   outline-offset: 2px;
 }
 
@@ -578,7 +578,7 @@
   
   .controls-bottom {
     background: rgba(0, 0, 0, 0.9);
-    border: 2px solid var(--spotify-white);
+    border: 2px solid var(--prime-white);
   }
 }
 
