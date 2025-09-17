@@ -1,29 +1,30 @@
-/* Spotify-inspired Global Styles - StreamFlix OTT */
+/* Prime Video-inspired Global Styles - StreamFlix OTT */
 :root {
-  /* Spotify Color Palette */
-  --spotify-green: #1db954;
-  --spotify-green-hover: #1ed760;
-  --spotify-green-dark: #1aa34a;
-  --spotify-black: #191414;
-  --spotify-dark-gray: #121212;
-  --spotify-medium-gray: #282828;
-  --spotify-light-gray: #b3b3b3;
-  --spotify-white: #ffffff;
-  --spotify-text-gray: #a7a7a7;
-  --spotify-hover-gray: #1a1a1a;
-  --spotify-card-bg: #181818;
-  --spotify-sidebar-bg: #000000;
-  --spotify-surface: #1e1e1e;
-  --spotify-elevated-base: #2a2a2a;
+  /* Prime Video Color Palette */
+  --prime-blue: #00A8E1;
+  --prime-blue-hover: #0779FF;
+  --prime-blue-dark: #146EB4;
+  --prime-black: #000000;
+  --prime-dark-gray: #000014;
+  --prime-medium-gray: #232F3E;
+  --prime-light-gray: #8C9196;
+  --prime-white: #ffffff;
+  --prime-text-gray: #9BA1A6;
+  --prime-hover-gray: #1A1A1A;
+  --prime-card-bg: #16181B;
+  --prime-sidebar-bg: #0F1419;
+  --prime-surface: #1E2328;
+  --prime-elevated-base: #2A2D32;
   
   /* Additional accent colors */
-  --spotify-blue: #1e3a8a;
-  --spotify-purple: #8b5cf6;
-  --spotify-orange: #f97316;
-  --spotify-red: #ef4444;
+  --prime-accent-blue: #3C78B4;
+  --prime-dark-blue: #3C648C;
+  --prime-benthic-black: #000014;
+  --prime-squid-ink: #232F3E;
+  --prime-petrel: #3C78B4;
   
-  /* Typography */
-  --font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* Typography - Prime Video Sharp inspired */
+  --font-family: 'Sharp Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -65,7 +66,7 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
-  --shadow-spotify: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-prime: 0 8px 24px rgba(0, 0, 0, 0.5);
   
   /* Glass morphism */
   --glass-bg: rgba(255, 255, 255, 0.1);
@@ -93,8 +94,8 @@ body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, var(--spotify-black) 0%, var(--spotify-dark-gray) 100%);
-  color: var(--spotify-white);
+  background: linear-gradient(135deg, var(--prime-black) 0%, var(--prime-dark-gray) 100%);
+  color: var(--prime-white);
   overflow-x: hidden;
   line-height: 1.6;
 }
@@ -103,34 +104,34 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, var(--spotify-black) 0%, var(--spotify-dark-gray) 100%);
+  background: linear-gradient(180deg, var(--prime-black) 0%, var(--prime-dark-gray) 100%);
 }
 
 .main-content {
   flex: 1;
   display: flex;
-  background-color: var(--spotify-dark-gray);
+  background-color: var(--prime-dark-gray);
   position: relative;
 }
 
-/* Spotify-style scrollbar */
+/* Prime Video-style scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--spotify-black);
+  background: var(--prime-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--spotify-medium-gray);
+  background: var(--prime-medium-gray);
   border-radius: 6px;
-  border: 2px solid var(--spotify-black);
+  border: 2px solid var(--prime-black);
   transition: background var(--transition-base);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--spotify-light-gray);
+  background: var(--prime-light-gray);
 }
 
 /* Global button styles */
@@ -146,14 +147,14 @@ button {
 }
 
 .btn-primary {
-  background-color: var(--spotify-green);
-  color: var(--spotify-black);
+  background-color: var(--prime-blue);
+  color: var(--prime-white);
   font-weight: var(--font-weight-bold);
   padding: 12px 32px;
-  border-radius: var(--border-radius-full);
+  border-radius: var(--border-radius-sm);
   font-size: var(--font-size-base);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-transform: none;
   transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
@@ -171,9 +172,9 @@ button {
 }
 
 .btn-primary:hover {
-  background-color: var(--spotify-green-hover);
-  transform: scale(1.04);
-  box-shadow: var(--shadow-spotify);
+  background-color: var(--prime-blue-hover);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-primary:hover::before {
@@ -182,26 +183,26 @@ button {
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--spotify-white);
-  border: 1px solid var(--spotify-light-gray);
+  color: var(--prime-white);
+  border: 1px solid var(--prime-light-gray);
   font-weight: var(--font-weight-bold);
   padding: 12px 32px;
-  border-radius: var(--border-radius-full);
+  border-radius: var(--border-radius-sm);
   font-size: var(--font-size-base);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-transform: none;
   transition: all var(--transition-base);
 }
 
 .btn-secondary:hover {
-  border-color: var(--spotify-white);
-  transform: scale(1.04);
-  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--prime-blue);
+  transform: scale(1.02);
+  background-color: rgba(0, 168, 225, 0.1);
 }
 
 .btn-ghost {
   background-color: transparent;
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
   font-weight: var(--font-weight-medium);
   padding: 8px 16px;
   border-radius: var(--border-radius-md);
@@ -212,13 +213,13 @@ button {
 }
 
 .btn-ghost:hover {
-  color: var(--spotify-white);
-  background-color: var(--spotify-hover-gray);
+  color: var(--prime-white);
+  background-color: var(--prime-hover-gray);
 }
 
 .btn-icon {
   background-color: transparent;
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
   padding: 8px;
   border-radius: 50%;
   font-size: var(--font-size-lg);
@@ -231,26 +232,26 @@ button {
 }
 
 .btn-icon:hover {
-  color: var(--spotify-white);
-  background-color: var(--spotify-hover-gray);
+  color: var(--prime-white);
+  background-color: var(--prime-hover-gray);
   transform: scale(1.1);
 }
 
 /* Typography classes */
 .text-primary {
-  color: var(--spotify-white);
+  color: var(--prime-white);
 }
 
 .text-secondary {
-  color: var(--spotify-light-gray);
+  color: var(--prime-light-gray);
 }
 
 .text-muted {
-  color: var(--spotify-text-gray);
+  color: var(--prime-text-gray);
 }
 
-.text-green {
-  color: var(--spotify-green);
+.text-blue {
+  color: var(--prime-blue);
 }
 
 .text-xs { font-size: var(--font-size-xs); }
@@ -324,9 +325,9 @@ button {
   animation: scaleIn 0.4s ease-out;
 }
 
-/* Spotify-style card */
-.spotify-card {
-  background-color: var(--spotify-card-bg);
+/* Prime Video-style card */
+.prime-card {
+  background-color: var(--prime-card-bg);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-md);
   transition: all var(--transition-slow);
@@ -335,25 +336,25 @@ button {
   overflow: hidden;
 }
 
-.spotify-card::before {
+.prime-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(29, 185, 84, 0.1) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(0, 168, 225, 0.1) 0%, transparent 50%);
   opacity: 0;
   transition: opacity var(--transition-slow);
 }
 
-.spotify-card:hover {
-  background-color: var(--spotify-medium-gray);
+.prime-card:hover {
+  background-color: var(--prime-medium-gray);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-spotify);
+  box-shadow: var(--shadow-prime);
 }
 
-.spotify-card:hover::before {
+.prime-card:hover::before {
   opacity: 1;
 }
 
@@ -453,14 +454,14 @@ button {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--spotify-green);
+  outline: 2px solid var(--prime-blue);
   outline-offset: 2px;
 }
 
 /* Selection styles */
 ::selection {
-  background-color: var(--spotify-green);
-  color: var(--spotify-black);
+  background-color: var(--prime-blue);
+  color: var(--prime-white);
 }
 
 /* Smooth transitions for theme changes */
@@ -471,7 +472,7 @@ input:focus-visible {
 /* Custom scrollbar for Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: var(--spotify-medium-gray) var(--spotify-black);
+  scrollbar-color: var(--prime-medium-gray) var(--prime-black);
 }
 
 /* Hover effects for interactive elements */
@@ -487,13 +488,13 @@ html {
 
 /* Gradient backgrounds */
 .gradient-primary {
-  background: linear-gradient(135deg, var(--spotify-green) 0%, var(--spotify-green-dark) 100%);
+  background: linear-gradient(135deg, var(--prime-blue) 0%, var(--prime-blue-dark) 100%);
 }
 
 .gradient-dark {
-  background: linear-gradient(135deg, var(--spotify-black) 0%, var(--spotify-dark-gray) 100%);
+  background: linear-gradient(135deg, var(--prime-black) 0%, var(--prime-dark-gray) 100%);
 }
 
 .gradient-surface {
-  background: linear-gradient(135deg, var(--spotify-surface) 0%, var(--spotify-elevated-base) 100%);
+  background: linear-gradient(135deg, var(--prime-surface) 0%, var(--prime-elevated-base) 100%);
 }
